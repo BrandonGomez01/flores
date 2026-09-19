@@ -2,101 +2,102 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Regalo para vos 💛</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para vos 💛</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#000;overflow:hidden;height:100vh;font-family:'Segoe UI',sans-serif}
-#p1{position:fixed;inset:0;background:#000;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;transition:.9s cubic-bezier(.8,0,.2,1)}
+body{background:#000;height:100vh;overflow:hidden;font-family:'Segoe UI',sans-serif}
+#p1{position:fixed;inset:0;background:#000;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;transition:.8s}
 #p1.hide{transform:translateY(-110%)}
-h1{color:white;font-size:2.6rem;line-height:1} h1 span{color:#ffeb3b}
-input{background:#111;border:1px solid #222;color:white;padding:18px 25px;border-radius:50px;width:100%;max-width:320px;font-size:18px;text-align:center;margin-top:30px;outline:none}
-input:focus{border-color:#ffeb3b}
-.btn{background:#ffeb3b;color:#000;border:none;padding:16px 50px;border-radius:50px;font-weight:900;font-size:18px;margin-top:20px;cursor:pointer}
-
-#p2{position:fixed;inset:0;background:#000}
-
-.flor-grande{position:absolute;transform:translate(-50%,-50%) scale(0);animation:florecer 1.2s cubic-bezier(.34,1.56,.64,1) forwards}
-@keyframes florecer{to{transform:translate(-50%,-50%) scale(1)}}
-.petal{position:absolute;width:70px;height:100px;background:#ffeb3b;border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;left:50%;top:0;transform-origin:35px 90px;box-shadow:inset -8px -8px 15px rgba(0,0,0,.2)}
-.centro{position:absolute;width:44px;height:44px;background:radial-gradient(circle,#5d4037,#3e2723);border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;box-shadow:0 0 20px rgba(0,0,0,.8)}
-
-.card{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(15,15,15,.92);border:1px solid rgba(255,235,59,.25);backdrop-filter:blur(12px);padding:32px 26px;border-radius:28px;max-width:360px;width:90%;text-align:center;z-index:10;display:none;box-shadow:0 0 60px rgba(0,0,0,1)}
-.card.show{display:block;animation:cardIn.8s.3s both}
-@keyframes cardIn{from{opacity:0;transform:translate(-50%,-40%)}to{opacity:1;transform:translate(-50%,-50%)}}
-.card h2{color:#ffeb3b;font-size:30px}
-.card p{color:#e0e0e0;margin-top:16px;line-height:1.6;font-size:17px}
+h1{color:white;font-size:2.5rem} h1 span{color:#ffeb3b}
+input{background:#111;border:1px solid #333;color:white;padding:16px 24px;border-radius:40px;max-width:300px;width:100%;text-align:center;font-size:18px;margin-top:25px;outline:none}
+.btn{background:#ffeb3b;color:#000;border:none;padding:14px 45px;border-radius:40px;font-weight:900;margin-top:18px;cursor:pointer}
+#escena{position:fixed;inset:0;background:#000;display:none}
+#escena.show{display:block}
+.night{position:absolute;inset:0;background:radial-gradient(ellipse at bottom,#0a0a0a 0%,#000 100%)}
+.flowers{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100%;height:100%;display:flex;justify-content:center;align-items:flex-end;padding-bottom:80px;gap:40px}
+.flower{position:relative;width:40px;height:380px;display:flex;flex-direction:column;align-items:center;animation:crecerTallo 1.5s cubic-bezier(.4,0,.2,1) forwards;transform-origin:bottom;transform:scaleY(0)}
+@keyframes crecerTallo{to{transform:scaleY(1)}}
+.tallo{width:8px;height:300px;background:linear-gradient(to top,#1a5a1a,#4caf50);border-radius:4px;position:relative}
+.hoja{position:absolute;width:60px;height:30px;background:#2e7d32;border-radius:100% 0 100% 0;left:-50px}
+.hoja.der{left:auto;right:-50px;border-radius:0 100% 0 100%}
+.flor-head{position:absolute;top:-50px;left:50%;transform:translateX(-50%);width:100px;height:100px;animation:florecer 1s .8s both}
+@keyframes florecer{from{transform:translateX(-50%) scale(0) rotate(0deg)}to{transform:translateX(-50%) scale(1) rotate(360deg)}}
+.petal{position:absolute;width:40px;height:65px;background:radial-gradient(ellipse at center,#ffeb3b 0%,#fdd835 60%,#fbc02d 100%);border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;left:50%;top:10px;transform-origin:20px 50px}
+.centro{position:absolute;width:30px;height:30px;background:radial-gradient(circle,#5d4037,#3e2723);border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3}
+.pasto{position:absolute;bottom:0;left:0;right:0;height:90px;background:linear-gradient(to top,#0a3d0a,#1a5a1a);clip-path:ellipse(70% 100% at 50% 100%)}
+.mensaje{position:fixed;left:50%;top:10%;transform:translateX(-50%);background:rgba(20,20,20,.92);border:1px solid rgba(255,235,59,.3);padding:24px 26px;border-radius:24px;width:90%;max-width:380px;text-align:center;z-index:10;display:none;color:#eee;line-height:1.5}
+.mensaje.show{display:block;animation:aparecer .8s .3s both}
+@keyframes aparecer{from{opacity:0;transform:translate(-50%,-20px)}to{opacity:1;transform:translate(-50%,0)}}
+#musicBtn{position:fixed;top:20px;right:20px;z-index:30;background:rgba(255,255,255,.1);border:1px solid rgba(255,235,59,.4);color:#ffeb3b;width:45px;height:45px;border-radius:50%;display:none;align-items:center;justify-content:center;cursor:pointer;font-size:20px}
+#musicBtn.show{display:flex}
 </style>
 </head>
 <body>
 
 <div id="p1">
-<div style="font-size:65px">🎁</div>
-<h1>Tengo un<br><span>regalo</span><br>para vos</h1>
-<p style="color:#666;margin-top:10px">Escribí tu nombre para abrirlo</p>
-<input id="nombre" type="text" placeholder="Tu nombre..." maxlength="20">
+<div style="font-size:60px">🎁</div>
+<h1>Tengo un<br><span>regalo</span> para vos</h1>
+<input id="nombre" placeholder="Escribí tu nombre...">
 <button class="btn" onclick="abrir()">ABRIR 💛</button>
+<p style="color:#444;margin-top:15px;font-size:12px">🔊 con música</p>
 </div>
 
-<div id="p2"></div>
-
-<div class="card" id="card">
-<h2>🌻 ¡Feliz Primavera! 🌻</h2>
-<p id="texto"></p>
+<div id="escena">
+<div class="night"></div>
+<div class="flowers" id="flowers"></div>
+<div class="pasto"></div>
+<div class="mensaje" id="mensaje">
+<h2 style="color:#ffeb3b">🌻 Feliz Primavera 🌻</h2>
+<p id="texto" style="margin-top:12px"></p>
 </div>
+<button id="musicBtn" onclick="toggleMusic()">🎵</button>
+</div>
+
+<!-- MÚSICA FLORICIENTA - FLORES AMARILLAS -->
+<audio id="musica" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_c8c8a650f7.mp3?filename=flores-amarillas-instrumental-111199.mp3" type="audio/mpeg">
+</audio>
 
 <script>
-function crearFlor(x,y, delay=0, size=1){
- setTimeout(()=>{
-  const cont=document.createElement('div');
-  cont.className='flor-grande';
-  cont.style.left=x+'%'; cont.style.top=y+'%';
-  cont.style.setProperty('--s', size);
-  cont.style.transform=`translate(-50%,-50%) scale(0)`;
+let playing=false;
+function toggleMusic(){
+ let a=document.getElementById('musica');
+ if(playing){a.pause(); document.getElementById('musicBtn').innerText='🔇';}
+ else{a.play(); document.getElementById('musicBtn').innerText='🎵';}
+ playing=!playing;
+}
 
-  for(let i=0;i<6;i++){
-   let p=document.createElement('div');
-   p.className='petal';
-   p.style.transform=`translateX(-50%) rotate(${i*60}deg)`;
-   p.style.width=(70*size)+'px'; p.style.height=(100*size)+'px';
-   p.style.transformOrigin=`${35*size}px ${90*size}px`;
-   cont.appendChild(p);
-  }
-  let c=document.createElement('div');
-  c.className='centro';
-  c.style.width=(44*size)+'px'; c.style.height=(44*size)+'px';
-  cont.appendChild(c);
-
-  document.getElementById('p2').appendChild(cont);
- }, delay);
+function crearFlor(delay, altura, hojas){
+ const flower=document.createElement('div');
+ flower.className='flower'; flower.style.animationDelay=delay+'s'; flower.style.height=altura+'px';
+ const head=document.createElement('div'); head.className='flor-head'; head.style.animationDelay=(delay+0.8)+'s';
+ for(let i=0;i<6;i++){let p=document.createElement('div'); p.className='petal'; p.style.transform=`translateX(-50%) rotate(${i*60}deg)`; head.appendChild(p);}
+ let c=document.createElement('div'); c.className='centro'; head.appendChild(c);
+ const tallo=document.createElement('div'); tallo.className='tallo'; tallo.style.height=(altura-80)+'px';
+ hojas.forEach(h=>{let hoja=document.createElement('div'); hoja.className='hoja '+(h.lado||''); hoja.style.bottom=h.bottom+'px'; tallo.appendChild(hoja);});
+ flower.appendChild(head); flower.appendChild(tallo); return flower;
 }
 
 function abrir(){
  let n=document.getElementById('nombre').value.trim();
  if(n.length<2){document.getElementById('nombre').style.borderColor='red';return;}
-
  document.getElementById('p1').classList.add('hide');
+ document.getElementById('escena').classList.add('show');
+ document.getElementById('musicBtn').classList.add('show');
+ document.getElementById('texto').innerHTML=`<b style="font-size:20px;color:white">${n},</b> que tengas un lindo día de la primavera.<br><br>Que todo lo bueno florezca para vos hoy y siempre.<br><br>Te merecés un jardín entero de cosas lindas 💛`;
 
- // Mensaje con el nombre adentro como pediste
- document.getElementById('texto').innerHTML = `<b style="color:white;font-size:20px">${n},</b><br><br>que tengas un lindo día de la primavera, lleno de sol, de risas y de cosas lindas.<br><br>Te merecés todo lo bonito que florece hoy y siempre. 💛`;
+ // Música auto
+ let audio=document.getElementById('musica');
+ audio.volume=0.7;
+ audio.play().then(()=>{playing=true}).catch(()=>{});
 
- // Hace florecer flores grandes de la nada
- const posiciones = [
-  [20,25,1.1], [80,20,1.2], [50,35,1.4],
-  [15,70,1.0], [85,75,1.1], [30,50,0.9],
-  [70,55,1.0], [50,80,1.3], [50,15,0.8]
- ];
- posiciones.forEach((p,i)=>{
-  crearFlor(p[0], p[1], i*250, p[2]);
- });
+ const cont=document.getElementById('flowers');
+ cont.appendChild(crearFlor(0.2, 340, [{bottom:120,lado:''},{bottom:180,lado:'der'}]));
+ cont.appendChild(crearFlor(0.5, 400, [{bottom:100,lado:'der'},{bottom:200,lado:''}]));
+ cont.appendChild(crearFlor(0.8, 320, [{bottom:110,lado:''},{bottom:170,lado:'der'}]));
 
- setTimeout(()=>{
-  document.getElementById('card').classList.add('show');
-  // siguen floreciendo más atrás
-  setInterval(()=>{
-   crearFlor(Math.random()*100, Math.random()*100, 0, 0.6+Math.random()*0.7);
-  }, 800);
- }, 1200);
+ setTimeout(()=>document.getElementById('mensaje').classList.add('show'), 2200);
 }
 </script>
 </body>
