@@ -9,27 +9,26 @@
 body{background:#000;height:100vh;overflow:hidden;font-family:'Segoe UI',sans-serif}
 #p1{position:fixed;inset:0;background:#000;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;transition:.8s}
 #p1.hide{transform:translateY(-110%)}
-h1{color:white;font-size:2.5rem} h1 span{color:#ffeb3b}
+h1{color:white;font-size:2.6rem} h1 span{color:#ffeb3b}
 input{background:#111;border:1px solid #333;color:white;padding:16px 24px;border-radius:40px;max-width:300px;width:100%;text-align:center;font-size:18px;margin-top:25px;outline:none}
 .btn{background:#ffeb3b;color:#000;border:none;padding:14px 45px;border-radius:40px;font-weight:900;margin-top:18px;cursor:pointer}
 #escena{position:fixed;inset:0;background:#000;display:none}
 #escena.show{display:block}
-.night{position:absolute;inset:0;background:radial-gradient(ellipse at bottom,#0a0a0a 0%,#000 100%)}
-.flowers{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100%;height:100%;display:flex;justify-content:center;align-items:flex-end;padding-bottom:80px;gap:40px}
-.flower{position:relative;width:40px;height:380px;display:flex;flex-direction:column;align-items:center;animation:crecerTallo 1.5s cubic-bezier(.4,0,.2,1) forwards;transform-origin:bottom;transform:scaleY(0)}
+.night{position:absolute;inset:0;background:radial-gradient(ellipse at center,#111 0%,#000 80%)}
+.flower{position:absolute;bottom:0;transform-origin:bottom center;animation:crecerTallo 1.2s cubic-bezier(.4,0,.2,1) forwards;transform:scaleY(0)}
 @keyframes crecerTallo{to{transform:scaleY(1)}}
-.tallo{width:8px;height:300px;background:linear-gradient(to top,#1a5a1a,#4caf50);border-radius:4px;position:relative}
-.hoja{position:absolute;width:60px;height:30px;background:#2e7d32;border-radius:100% 0 100% 0;left:-50px}
-.hoja.der{left:auto;right:-50px;border-radius:0 100% 0 100%}
-.flor-head{position:absolute;top:-50px;left:50%;transform:translateX(-50%);width:100px;height:100px;animation:florecer 1s .8s both}
+.tallo{width:7px;background:linear-gradient(to top,#1a5a1a,#4caf50);border-radius:4px;position:absolute;bottom:0;left:50%;transform:translateX(-50%)}
+.hoja{position:absolute;width:55px;height:26px;background:#2e7d32;border-radius:100% 0 100% 0}
+.hoja.der{border-radius:0 100% 0 100%}
+.flor-head{position:absolute;left:50%;transform:translateX(-50%);animation:florecer 1s both}
 @keyframes florecer{from{transform:translateX(-50%) scale(0) rotate(0deg)}to{transform:translateX(-50%) scale(1) rotate(360deg)}}
-.petal{position:absolute;width:40px;height:65px;background:radial-gradient(ellipse at center,#ffeb3b 0%,#fdd835 60%,#fbc02d 100%);border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;left:50%;top:10px;transform-origin:20px 50px}
-.centro{position:absolute;width:30px;height:30px;background:radial-gradient(circle,#5d4037,#3e2723);border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3}
-.pasto{position:absolute;bottom:0;left:0;right:0;height:90px;background:linear-gradient(to top,#0a3d0a,#1a5a1a);clip-path:ellipse(70% 100% at 50% 100%)}
-.mensaje{position:fixed;left:50%;top:10%;transform:translateX(-50%);background:rgba(20,20,20,.92);border:1px solid rgba(255,235,59,.3);padding:24px 26px;border-radius:24px;width:90%;max-width:380px;text-align:center;z-index:10;display:none;color:#eee;line-height:1.5}
-.mensaje.show{display:block;animation:aparecer .8s .3s both}
-@keyframes aparecer{from{opacity:0;transform:translate(-50%,-20px)}to{opacity:1;transform:translate(-50%,0)}}
-#musicBtn{position:fixed;top:20px;right:20px;z-index:30;background:rgba(255,255,255,.1);border:1px solid rgba(255,235,59,.4);color:#ffeb3b;width:45px;height:45px;border-radius:50%;display:none;align-items:center;justify-content:center;cursor:pointer;font-size:20px}
+.petal{position:absolute;width:36px;height:58px;background:radial-gradient(ellipse at center,#ffeb3b 0%,#fdd835 60%,#fbc02d 100%);border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;left:50%;top:8px;transform-origin:18px 45px;box-shadow:inset -4px -4px 8px rgba(0,0,0,.2)}
+.centro{position:absolute;width:26px;height:26px;background:radial-gradient(circle,#5d4037,#3e2723);border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3}
+.pasto{position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to top,#0a2a0a,#143d14);filter:blur(0.5px)}
+.mensaje{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(10,10,10,.88);border:1px solid rgba(255,235,59,.35);backdrop-filter:blur(15px);padding:32px 28px;border-radius:26px;width:88%;max-width:380px;text-align:center;z-index:15;display:none;color:#eee;line-height:1.5;box-shadow:0 0 80px rgba(0,0,0,1)}
+.mensaje.show{display:block;animation:aparecer.9s.5s both}
+@keyframes aparecer{from{opacity:0;transform:translate(-50%,-40%)}to{opacity:1;transform:translate(-50%,-50%)}}
+#musicBtn{position:fixed;top:18px;right:18px;z-index:30;background:rgba(255,255,255,.08);border:1px solid rgba(255,235,59,.4);color:#ffeb3b;width:46px;height:46px;border-radius:50%;display:none;align-items:center;justify-content:center;cursor:pointer}
 #musicBtn.show{display:flex}
 </style>
 </head>
@@ -37,24 +36,22 @@ input{background:#111;border:1px solid #333;color:white;padding:16px 24px;border
 
 <div id="p1">
 <div style="font-size:60px">🎁</div>
-<h1>Tengo un<br><span>regalo</span> para vos</h1>
+<h1>Tengo un<br><span>regalo</span><br>para vos</h1>
 <input id="nombre" placeholder="Escribí tu nombre...">
 <button class="btn" onclick="abrir()">ABRIR 💛</button>
-<p style="color:#444;margin-top:15px;font-size:12px">🔊 con música</p>
 </div>
 
 <div id="escena">
 <div class="night"></div>
-<div class="flowers" id="flowers"></div>
+<div id="jardin" style="position:absolute;inset:0"></div>
 <div class="pasto"></div>
 <div class="mensaje" id="mensaje">
-<h2 style="color:#ffeb3b">🌻 Feliz Primavera 🌻</h2>
-<p id="texto" style="margin-top:12px"></p>
+<h2 style="color:#ffeb3b">🌻 ¡Feliz Primavera! 🌻</h2>
+<p id="texto" style="margin-top:14px;font-size:17px"></p>
 </div>
 <button id="musicBtn" onclick="toggleMusic()">🎵</button>
 </div>
 
-<!-- MÚSICA FLORICIENTA - FLORES AMARILLAS -->
 <audio id="musica" loop>
 <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_c8c8a650f7.mp3?filename=flores-amarillas-instrumental-111199.mp3" type="audio/mpeg">
 </audio>
@@ -68,15 +65,48 @@ function toggleMusic(){
  playing=!playing;
 }
 
-function crearFlor(delay, altura, hojas){
- const flower=document.createElement('div');
- flower.className='flower'; flower.style.animationDelay=delay+'s'; flower.style.height=altura+'px';
- const head=document.createElement('div'); head.className='flor-head'; head.style.animationDelay=(delay+0.8)+'s';
- for(let i=0;i<6;i++){let p=document.createElement('div'); p.className='petal'; p.style.transform=`translateX(-50%) rotate(${i*60}deg)`; head.appendChild(p);}
- let c=document.createElement('div'); c.className='centro'; head.appendChild(c);
- const tallo=document.createElement('div'); tallo.className='tallo'; tallo.style.height=(altura-80)+'px';
- hojas.forEach(h=>{let hoja=document.createElement('div'); hoja.className='hoja '+(h.lado||''); hoja.style.bottom=h.bottom+'px'; tallo.appendChild(hoja);});
- flower.appendChild(head); flower.appendChild(tallo); return flower;
+function crearFlor(xPercent, altura, delay){
+ setTimeout(()=>{
+  const wrap=document.createElement('div');
+  wrap.className='flower';
+  wrap.style.left=xPercent+'%';
+  wrap.style.height=altura+'px';
+  wrap.style.animationDelay=delay+'s';
+  wrap.style.zIndex=Math.floor(altura);
+
+  const tallo=document.createElement('div');
+  tallo.className='tallo';
+  tallo.style.height=altura+'px';
+
+  // hojas random
+  let h1=document.createElement('div');
+  h1.className='hoja '+(Math.random()>0.5?'der':'');
+  h1.style.bottom=(altura*0.3)+'px';
+  h1.style.left=h1.classList.contains('der')?'8px':'-58px';
+  tallo.appendChild(h1);
+
+  let h2=document.createElement('div');
+  h2.className='hoja '+(Math.random()>0.5?'der':'');
+  h2.style.bottom=(altura*0.6)+'px';
+  h2.style.left=h2.classList.contains('der')?'8px':'-58px';
+  tallo.appendChild(h2);
+
+  const head=document.createElement('div');
+  head.className='flor-head';
+  head.style.top='-10px';
+  head.style.animationDelay=(delay+0.6)+'s';
+  for(let i=0;i<6;i++){
+   let p=document.createElement('div');
+   p.className='petal';
+   p.style.transform=`translateX(-50%) rotate(${i*60}deg)`;
+   head.appendChild(p);
+  }
+  let c=document.createElement('div'); c.className='centro'; head.appendChild(c);
+
+  wrap.appendChild(head);
+  wrap.appendChild(tallo);
+  document.getElementById('jardin').appendChild(wrap);
+ }, delay*200);
 }
 
 function abrir(){
@@ -85,19 +115,26 @@ function abrir(){
  document.getElementById('p1').classList.add('hide');
  document.getElementById('escena').classList.add('show');
  document.getElementById('musicBtn').classList.add('show');
- document.getElementById('texto').innerHTML=`<b style="font-size:20px;color:white">${n},</b> que tengas un lindo día de la primavera.<br><br>Que todo lo bueno florezca para vos hoy y siempre.<br><br>Te merecés un jardín entero de cosas lindas 💛`;
+ document.getElementById('texto').innerHTML=`<b style="color:white;font-size:22px">${n},</b><br><br>que tengas un lindo día de la primavera, que hoy todo lo lindo florezca para vos.<br><br>Te merecés cada flor amarilla de este jardín y mucho más 💛🌻`;
 
- // Música auto
- let audio=document.getElementById('musica');
- audio.volume=0.7;
- audio.play().then(()=>{playing=true}).catch(()=>{});
+ let audio=document.getElementById('musica'); audio.volume=0.7; audio.play().then(()=>playing=true).catch(()=>{});
 
- const cont=document.getElementById('flowers');
- cont.appendChild(crearFlor(0.2, 340, [{bottom:120,lado:''},{bottom:180,lado:'der'}]));
- cont.appendChild(crearFlor(0.5, 400, [{bottom:100,lado:'der'},{bottom:200,lado:''}]));
- cont.appendChild(crearFlor(0.8, 320, [{bottom:110,lado:''},{bottom:170,lado:'der'}]));
+ // CREA 22 FLORES EN TODA LA PANTALLA
+ for(let i=0;i<22;i++){
+  let x = 3 + Math.random()*94; // de punta a punta
+  let altura = 180 + Math.random()*280; // diferentes alturas
+  let delay = Math.random()*2.5;
+  crearFlor(x, altura, delay);
+ }
 
- setTimeout(()=>document.getElementById('mensaje').classList.add('show'), 2200);
+ setTimeout(()=>document.getElementById('mensaje').classList.add('show'), 2600);
+
+ // siguen apareciendo infinitas
+ setInterval(()=>{
+  let x = Math.random()*100;
+  let altura = 180 + Math.random()*250;
+  crearFlor(x, altura, 0);
+ }, 700);
 }
 </script>
 </body>
