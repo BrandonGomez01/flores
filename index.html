@@ -7,29 +7,37 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#000;height:100vh;overflow:hidden;font-family:'Segoe UI',sans-serif}
-#p1{position:fixed;inset:0;background:#000;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;transition:.8s}
+#p1{position:fixed;inset:0;background:#000;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;transition:.8s}
 #p1.hide{transform:translateY(-110%)}
 h1{color:white;font-size:2.6rem} h1 span{color:#ffeb3b}
 input{background:#111;border:1px solid #333;color:white;padding:16px 24px;border-radius:40px;max-width:300px;width:100%;text-align:center;font-size:18px;margin-top:25px;outline:none}
 .btn{background:#ffeb3b;color:#000;border:none;padding:14px 45px;border-radius:40px;font-weight:900;margin-top:18px;cursor:pointer}
+
 #escena{position:fixed;inset:0;background:#000;display:none}
 #escena.show{display:block}
-.night{position:absolute;inset:0;background:radial-gradient(ellipse at center,#111 0%,#000 80%)}
-.flower{position:absolute;bottom:0;transform-origin:bottom center;animation:crecerTallo 1.2s cubic-bezier(.4,0,.2,1) forwards;transform:scaleY(0)}
-@keyframes crecerTallo{to{transform:scaleY(1)}}
-.tallo{width:7px;background:linear-gradient(to top,#1a5a1a,#4caf50);border-radius:4px;position:absolute;bottom:0;left:50%;transform:translateX(-50%)}
-.hoja{position:absolute;width:55px;height:26px;background:#2e7d32;border-radius:100% 0 100% 0}
-.hoja.der{border-radius:0 100% 0 100%}
-.flor-head{position:absolute;left:50%;transform:translateX(-50%);animation:florecer 1s both}
-@keyframes florecer{from{transform:translateX(-50%) scale(0) rotate(0deg)}to{transform:translateX(-50%) scale(1) rotate(360deg)}}
-.petal{position:absolute;width:36px;height:58px;background:radial-gradient(ellipse at center,#ffeb3b 0%,#fdd835 60%,#fbc02d 100%);border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;left:50%;top:8px;transform-origin:18px 45px;box-shadow:inset -4px -4px 8px rgba(0,0,0,.2)}
-.centro{position:absolute;width:26px;height:26px;background:radial-gradient(circle,#5d4037,#3e2723);border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3}
-.pasto{position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to top,#0a2a0a,#143d14);filter:blur(0.5px)}
-.mensaje{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(10,10,10,.88);border:1px solid rgba(255,235,59,.35);backdrop-filter:blur(15px);padding:32px 28px;border-radius:26px;width:88%;max-width:380px;text-align:center;z-index:15;display:none;color:#eee;line-height:1.5;box-shadow:0 0 80px rgba(0,0,0,1)}
-.mensaje.show{display:block;animation:aparecer.9s.5s both}
+
+/* FLORES BIEN ARMADAS */
+.jardin{position:absolute;inset:0;z-index:1}
+.flower{position:absolute;bottom:0;display:flex;flex-direction:column;align-items:center;transform-origin:bottom center}
+.tallo{width:8px;background:linear-gradient(to top,#134a13,#4caf50);position:absolute;bottom:0;left:50%;transform:translateX(-50%);border-radius:4px}
+.flower-head{position:absolute;width:90px;height:90px;left:50%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center}
+.petal{position:absolute;width:32px;height:52px;background:linear-gradient(to bottom,#ffeb3b,#fbc02d);border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;left:50%;top:50%;transform-origin:16px 36px}
+.center{position:absolute;width:28px;height:28px;background:#3e2723;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);z-index:10;box-shadow:inset 0 2px 5px rgba(0,0,0,.8)}
+.leaf{position:absolute;width:50px;height:22px;background:#2e7d32;border-radius:0 100% 0 100%;left:10px}
+.leaf.left{border-radius:100% 0 100% 0;left:auto;right:10px}
+
+.pasto{position:absolute;bottom:0;left:0;right:0;height:100px;background:linear-gradient(to top,#081a08,#1a4d1a);z-index:2}
+
+/* MENSAJE SIEMPRE ARRIBA */
+.mensaje{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(15,15,15,.92);border:1px solid rgba(255,235,59,.4);backdrop-filter:blur(20px);padding:32px 28px;border-radius:26px;width:88%;max-width:380px;text-align:center;z-index:50;display:none;color:#eee;line-height:1.5;box-shadow:0 0 80px black}
+.mensaje.show{display:block;animation:aparecer .8s both}
 @keyframes aparecer{from{opacity:0;transform:translate(-50%,-40%)}to{opacity:1;transform:translate(-50%,-50%)}}
-#musicBtn{position:fixed;top:18px;right:18px;z-index:30;background:rgba(255,255,255,.08);border:1px solid rgba(255,235,59,.4);color:#ffeb3b;width:46px;height:46px;border-radius:50%;display:none;align-items:center;justify-content:center;cursor:pointer}
-#musicBtn.show{display:flex}
+
+@keyframes crecer{0%{transform:scaleY(0)}100%{transform:scaleY(1)}}
+@keyframes bloom{0%{transform:translateX(-50%) scale(0)}100%{transform:translateX(-50%) scale(1)}}
+
+#musicBtn{position:fixed;top:18px;right:18px;z-index:60;background:rgba(255,255,255,.1);border:1px solid #ffeb3b;color:#ffeb3b;width:46px;height:46px;border-radius:50%;display:none;cursor:pointer}
+#musicBtn.show{display:flex;align-items:center;justify-content:center}
 </style>
 </head>
 <body>
@@ -42,13 +50,14 @@ input{background:#111;border:1px solid #333;color:white;padding:16px 24px;border
 </div>
 
 <div id="escena">
-<div class="night"></div>
-<div id="jardin" style="position:absolute;inset:0"></div>
+<div class="jardin" id="jardin"></div>
 <div class="pasto"></div>
+
 <div class="mensaje" id="mensaje">
 <h2 style="color:#ffeb3b">🌻 ¡Feliz Primavera! 🌻</h2>
 <p id="texto" style="margin-top:14px;font-size:17px"></p>
 </div>
+
 <button id="musicBtn" onclick="toggleMusic()">🎵</button>
 </div>
 
@@ -60,81 +69,66 @@ input{background:#111;border:1px solid #333;color:white;padding:16px 24px;border
 let playing=false;
 function toggleMusic(){
  let a=document.getElementById('musica');
- if(playing){a.pause(); document.getElementById('musicBtn').innerText='🔇';}
- else{a.play(); document.getElementById('musicBtn').innerText='🎵';}
+ if(playing){a.pause(); musicBtn.innerText='🔇';} else{a.play(); musicBtn.innerText='🎵';}
  playing=!playing;
 }
 
-function crearFlor(xPercent, altura, delay){
- setTimeout(()=>{
-  const wrap=document.createElement('div');
-  wrap.className='flower';
-  wrap.style.left=xPercent+'%';
-  wrap.style.height=altura+'px';
-  wrap.style.animationDelay=delay+'s';
-  wrap.style.zIndex=Math.floor(altura);
+function crearFlor(x, altura, delay){
+ const cont=document.createElement('div');
+ cont.className='flower';
+ cont.style.left=x+'%';
+ cont.style.bottom='0px';
+ cont.style.height=altura+'px';
+ cont.style.zIndex=Math.floor(altura);
+ cont.style.animation=`crecer 1s ${delay}s both`;
+ cont.style.transformOrigin='bottom';
 
-  const tallo=document.createElement('div');
-  tallo.className='tallo';
-  tallo.style.height=altura+'px';
+ const tallo=document.createElement('div');
+ tallo.className='tallo';
+ tallo.style.height=altura+'px';
 
-  // hojas random
-  let h1=document.createElement('div');
-  h1.className='hoja '+(Math.random()>0.5?'der':'');
-  h1.style.bottom=(altura*0.3)+'px';
-  h1.style.left=h1.classList.contains('der')?'8px':'-58px';
-  tallo.appendChild(h1);
+ // hojas
+ let leaf1=document.createElement('div'); leaf1.className='leaf left';
+ leaf1.style.bottom=(altura*0.35)+'px'; tallo.appendChild(leaf1);
+ let leaf2=document.createElement('div'); leaf2.className='leaf';
+ leaf2.style.bottom=(altura*0.6)+'px'; tallo.appendChild(leaf2);
 
-  let h2=document.createElement('div');
-  h2.className='hoja '+(Math.random()>0.5?'der':'');
-  h2.style.bottom=(altura*0.6)+'px';
-  h2.style.left=h2.classList.contains('der')?'8px':'-58px';
-  tallo.appendChild(h2);
+ const head=document.createElement('div');
+ head.className='flower-head';
+ head.style.bottom=(altura-10)+'px';
+ head.style.animation=`bloom 0.8s ${delay+0.8}s both`;
 
-  const head=document.createElement('div');
-  head.className='flor-head';
-  head.style.top='-10px';
-  head.style.animationDelay=(delay+0.6)+'s';
-  for(let i=0;i<6;i++){
-   let p=document.createElement('div');
-   p.className='petal';
-   p.style.transform=`translateX(-50%) rotate(${i*60}deg)`;
-   head.appendChild(p);
-  }
-  let c=document.createElement('div'); c.className='centro'; head.appendChild(c);
+ for(let i=0;i<6;i++){
+  let petal=document.createElement('div');
+  petal.className='petal';
+  petal.style.transform=`translate(-50%,-50%) rotate(${i*60}deg) translateY(-18px)`;
+  head.appendChild(petal);
+ }
+ let center=document.createElement('div'); center.className='center'; head.appendChild(center);
 
-  wrap.appendChild(head);
-  wrap.appendChild(tallo);
-  document.getElementById('jardin').appendChild(wrap);
- }, delay*200);
+ cont.appendChild(head);
+ cont.appendChild(tallo);
+ document.getElementById('jardin').appendChild(cont);
 }
 
 function abrir(){
  let n=document.getElementById('nombre').value.trim();
- if(n.length<2){document.getElementById('nombre').style.borderColor='red';return;}
- document.getElementById('p1').classList.add('hide');
- document.getElementById('escena').classList.add('show');
- document.getElementById('musicBtn').classList.add('show');
- document.getElementById('texto').innerHTML=`<b style="color:white;font-size:22px">${n},</b><br><br>que tengas un lindo día de la primavera, que hoy todo lo lindo florezca para vos.<br><br>Te merecés cada flor amarilla de este jardín y mucho más 💛🌻`;
+ if(n.length<2){nombre.style.borderColor='red';return;}
+ p1.classList.add('hide');
+ escena.classList.add('show');
+ musicBtn.classList.add('show');
+ texto.innerHTML=`<b style="color:white;font-size:22px">${n},</b><br><br>que tengas un lindo día de la primavera, que hoy todo lo lindo florezca para vos.<br><br>Te merecés cada flor amarilla de este jardín y mucho más 💛🌻`;
 
  let audio=document.getElementById('musica'); audio.volume=0.7; audio.play().then(()=>playing=true).catch(()=>{});
 
- // CREA 22 FLORES EN TODA LA PANTALLA
- for(let i=0;i<22;i++){
-  let x = 3 + Math.random()*94; // de punta a punta
-  let altura = 180 + Math.random()*280; // diferentes alturas
-  let delay = Math.random()*2.5;
+ // 25 flores por toda la pantalla
+ for(let i=0;i<25;i++){
+  let x = 5 + Math.random()*90;
+  let altura = 150 + Math.random()*280;
+  let delay = Math.random()*2;
   crearFlor(x, altura, delay);
  }
-
- setTimeout(()=>document.getElementById('mensaje').classList.add('show'), 2600);
-
- // siguen apareciendo infinitas
- setInterval(()=>{
-  let x = Math.random()*100;
-  let altura = 180 + Math.random()*250;
-  crearFlor(x, altura, 0);
- }, 700);
+ setTimeout(()=>mensaje.classList.add('show'), 2400);
 }
 </script>
 </body>
